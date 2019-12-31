@@ -1,1 +1,15 @@
-theme: jekyll-theme-time-machine
+
+highlight:
+  enable: false
+
+theme: fluid
+
+deploy:
+  type: git
+  repo: git@github.com:White-Lee/White-Lee.github.io.git
+  branch: master
+
+ignore:
+  - "node_modules/**"
+  - ".gitignore"
+  - "package-lock.json"
