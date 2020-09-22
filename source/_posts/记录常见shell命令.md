@@ -1,3 +1,7 @@
+---
+title: 常用shell命令
+---
+
 # 常用shell命令
 
 ## du(dask usage) 命令详解
