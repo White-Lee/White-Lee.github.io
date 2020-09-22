@@ -1,10 +1,6 @@
 # 常用shell命令
 
-
-
 ## du(dask usage) 命令详解
-
-
 
 ```shell
 du [-abcDhHklmsSx][-L <符号连接>][-X <文件>][--block-size][--exclude=<目录或文件>][--max-depth=<目录层数>][--help][--version][目录或文件]
@@ -20,11 +16,7 @@ du [-abcDhHklmsSx][-L <符号连接>][-X <文件>][--block-size][--exclude=<目�
 * `--exclude=<目录或文件>`  略过指定的目录或文件。
 * `--max-depth=<目录层数>`  超过指定层数的目录后，予以忽略。
 
-
-
 ## man - an interface to the on-line reference manuals(命令在线参考)
-
-
 
 ```bash
 # 查看pwd命令详情
