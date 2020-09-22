@@ -19,19 +19,6 @@ public class Queen2 {
 
     private static boolean check(int row) {
         for (int j = 0; j < row; j++) {
-            /*
-             * 若有在对角线上
-             *   0  0  0  0  1  0  0  0  
-             *   0  1  0  0  0  0  0  0  
-             *   0  0  0  0  0  0  1  0  
-             *   1  0  0  0  0  0  0  0  
-             *   0  0  0  1  0  0  0  0  
-             *   0  0  0  0  0  0  0  1  
-             *   0  0  0  0  1  0  0  0  
-             *   0  0  1  0  0  0  0  0ss
-             *  恒有
-             *     abs(arr[row] - arr[j]) == abs(row - j)
-             */
             if ((Math.abs(row - j)) == (Math.abs(arr[j] - arr[row])) // 在对角线上
                 || (arr[j] == arr[row])) // 判断列号是否相同
                 return false;

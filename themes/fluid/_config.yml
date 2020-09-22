@@ -105,12 +105,12 @@ footer:
     pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
     uv_format: "总访客数 {} 人"
 
-  beian:  # The footer of China's website policy, other areas keep disable
-    enable: false
-    icp_text: 京ICP证123456号 # ICP证号
-    police_text: 京公网安备12345678号 # 公安备案号，不填则只显示ICP
-    police_code: 12345678 # 公安备案的编号，用于URL跳转查询
-    police_icon: /img/police_beian.png # 公安备案的图片. 为空时不显示备案图片
+  # beian:  # The footer of China's website policy, other areas keep disable
+    # enable: false
+    # icp_text: 京ICP证123456号 # ICP证号
+    # police_text: 京公网安备12345678号 # 公安备案号，不填则只显示ICP
+    # police_code: 12345678 # 公安备案的编号，用于URL跳转查询
+    # police_icon: /img/police_beian.png # 公安备案的图片. 为空时不显示备案图片
 
 scroll_top_arrow:  # 向顶部滚动的箭头
   enable: true
@@ -291,7 +291,7 @@ about:  # 以下仅为页面顶部的基本信息，更多内容请在 ./pages/a
   banner_img: /img/default.jpg
   banner_img_height: 80  # available: 0 - 100
   avatar: /img/avatar.png # 头像
-  name: myname
+  name: white-lee
   introduce: info / info / info # 支持 HTML
   icons: # 更多图标可从 https://fontawesome.com/v4.7.0/icons/ 查找，并以 "图标名: url" 的格式添加在下方
     "fab fa-github": https://github.com/White-Lee
