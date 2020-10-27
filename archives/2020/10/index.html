@@ -15,7 +15,7 @@
   <meta name="description" content>
   <meta name="author" content="White Lee">
   <meta name="keywords" content>
-  <title>八皇后问题 ~ 流年笑掷 未来可期</title>
+  <title>Archives ~ 流年笑掷 未来可期</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 80vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -115,41 +115,6 @@
             </span>
 
             
-              <br>
-              
-                <p class="mt-3">
-                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Tuesday, September 22nd 2020, 7:59 am
-                </p>
-              
-
-              <p>
-                
-                  
-                  &nbsp;<i class="far fa-chart-bar"></i>
-                  <span class="post-count">
-                    195 字
-                  </span>&nbsp;
-                
-
-                
-                  
-                  &nbsp;<i class="far fa-clock"></i>
-                  <span class="post-count">
-                      1 分钟
-                  </span>&nbsp;
-                
-
-                
-                  <!-- 不蒜子统计文章PV -->
-                  
-                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
-                  <span id="busuanzi_container_page_pv">
-                    <span id="busuanzi_value_page_pv"></span> 次
-                  </span>&nbsp;
-                
-              </p>
-            
           </div>
 
           
@@ -160,104 +125,47 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">3 posts in total.</p>
+  <hr>
+  
+    
       
+      <p class="h5">2020</p>
+    
+    <a href="/2020-10-27/EightQueensPuzzle/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">八皇后问题</span>
+      <span style="float: right;">10-27</span>
+    </a>
+  
+    
+    <a href="/2020-10-27/tcp抓包/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">TCP抓包</span>
+      <span style="float: right;">10-27</span>
+    </a>
+  
+    
+    <a href="/2020-10-27/记录常见shell命令/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">常用shell命令</span>
+      <span style="float: right;">10-27</span>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="py-5 z-depth-3" id="board">
-        <div class="post-content mx-auto" id="post">
-          <div class="markdown-body">
-            <p>在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
-<pre><code class="java">
-import java.util.Arrays;
 
-/**
- * @author bwb
- * @date 2018/06/20
- */
-public class Queen2 {
-
-    private static int[] arr = new int[8];
-
-    static int sum = 0;
-
-    private static boolean check(int row) {
-        for (int j = 0; j &lt; row; j++) {
-            if ((Math.abs(row - j)) == (Math.abs(arr[j] - arr[row])) // 在对角线上
-                || (arr[j] == arr[row])) // 判断列号是否相同
-                return false;
-        }
-        return true;
-    }
-
-    /**
-     * 递归
-     * @param row
-     */
-    private static void fun(int row) {
-        if (row == 8) {
-            int[][] a = new int[8][8];
-            for (int i = 0; i &lt; 8; i++) {
-                a[i][arr[i]] = 1;
-            }
-            sum++;
-            System.out.println(Arrays.deepToString(a));s
-        } else {
-            for (int col = 0; col &lt; 8; col++) {
-                arr[row] = col;
-                if (check(row))
-                    fun(row + 1);
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        fun(0);
-        System.out.println(sum);
-    }
-
-}
-
-</code></pre>
-
-            <hr>
-          </div>
-          <br>
-          <div>
-            <p>
-            
-            
-            </p>
-            
-              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
-            
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-2 toc-container">
-      
-  <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
-    <div id="tocbot"></div>
-  </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- custom -->
-
-
-<!-- Comments -->
-<div class="col-lg-7 mx-auto nopadding-md">
-  <div class="container comments mx-auto" id="comments">
-    
-  </div>
-</div>
-
     
   </main>
 
@@ -336,11 +244,6 @@ public class Queen2 {
 
 
 
-  
-    <script src="/lib/tocbot/tocbot.min.js" ></script>
-  
-  <script src="/js/post.js" ></script>
-
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -381,7 +284,7 @@ public class Queen2 {
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "八皇后问题&nbsp;",
+        "Archive&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

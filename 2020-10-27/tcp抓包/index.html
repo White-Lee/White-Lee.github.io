@@ -15,7 +15,7 @@
   <meta name="description" content>
   <meta name="author" content="White Lee">
   <meta name="keywords" content>
-  <title>常用shell命令 ~ 流年笑掷 未来可期</title>
+  <title>TCP抓包 ~ 流年笑掷 未来可期</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -119,7 +119,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Tuesday, September 22nd 2020, 7:59 am
+                  Tuesday, October 27th 2020, 1:33 am
                 </p>
               
 
@@ -128,7 +128,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    948 字
+                    515 字
                   </span>&nbsp;
                 
 
@@ -136,7 +136,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      4 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -169,111 +169,46 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="常用shell命令"><a href="#常用shell命令" class="headerlink" title="常用shell命令"></a>常用shell命令</h1><h2 id="du-dask-usage-命令详解"><a href="#du-dask-usage-命令详解" class="headerlink" title="du(dask usage) 命令详解"></a>du(dask usage) 命令详解</h2><pre><code class="shell">du [-abcDhHklmsSx][-L &lt;符号连接&gt;][-X &lt;文件&gt;][--block-size][--exclude=&lt;目录或文件&gt;][--max-depth=&lt;目录层数&gt;][--help][--version][目录或文件]
+            <p><strong>安装</strong></p>
+<pre><code class="bash"># under centos
+yum install tcpdump
+# under Ubuntu
+apt-get install tcpdump
 </code></pre>
-<ul>
-<li><code>-a</code> 或 <code>-all</code> 显示全部文件大小</li>
-<li><code>-b</code>或<code>-bytes</code>  显示目录或文件大小时，以byte为单位。</li>
-<li><code>-h</code>或<code>-human-readable</code>  以K，M，G为单位，提高信息的可读性。</li>
-<li><code>-H</code>或<code>--si</code>  与<code>-h</code>参数相同，但是K，M，G是以1000为换算单位。</li>
-<li><code>-s</code>或<code>--summarize</code>  仅显示总计。</li>
-<li><code>-S</code>或<code>--separate-dirs</code>  显示个别目录的大小时，并不含其子目录的大小。</li>
-<li><code>-X</code>&lt;文件&gt;或<code>--exclude-from=&lt;文件&gt;</code>  在&lt;文件&gt;指定目录或文件。</li>
-<li><code>--exclude=&lt;目录或文件&gt;</code>  略过指定的目录或文件。</li>
-<li><code>--max-depth=&lt;目录层数&gt;</code>  超过指定层数的目录后，予以忽略。</li>
-</ul>
-<h2 id="man-an-interface-to-the-on-line-reference-manuals-命令在线参考"><a href="#man-an-interface-to-the-on-line-reference-manuals-命令在线参考" class="headerlink" title="man - an interface to the on-line reference manuals(命令在线参考)"></a>man - an interface to the on-line reference manuals(命令在线参考)</h2><pre><code class="bash"># 查看pwd命令详情
-man pwd
+<p><strong>监视指定网络接口的数据包(一定要查看网卡)</strong></p>
+<pre><code class="bash">tcpdump -i eth1
 </code></pre>
-<ul>
-<li>按<code>h</code>获取帮助，按<code>q</code>推出</li>
-</ul>
-<h2 id="lsblk-list-block-devices-磁盘清单"><a href="#lsblk-list-block-devices-磁盘清单" class="headerlink" title="lsblk - list block devices(磁盘清单)"></a>lsblk - list block devices(磁盘清单)</h2><pre><code class="ba">[root@server-mom-test ~]# lsblk
-NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-fd0               2:0    1    4K  0 disk 
-sda               8:0    0   50G  0 disk 
-├─sda1            8:1    0    1G  0 part /boot
-└─sda2            8:2    0   49G  0 part 
-  ├─centos-root 253:0    0  244G  0 lvm  /
-  └─centos-swap 253:1    0    5G  0 lvm  [SWAP]
-sdb               8:16   0  200G  0 disk 
-└─sdb1            8:17   0  200G  0 part 
-  └─centos-root 253:0    0  244G  0 lvm  /
-sr0              11:0    1 1024M  0 rom  
+<p><strong>监视指定主机的数据包</strong></p>
+<pre><code class="bash"># 打印所有进入或离开sundown的数据包.
+tcpdump host sundown
+# 指定ip,例如截获所有210.27.48.1 的主机收到的和发出的所有的数据包
+tcpdump host 210.27.48.1
+# 打印helios 与 hot 或者与 ace 之间通信的数据包
+tcpdump host helios and \( hot or ace \)
+# 截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信
+tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \) 
+# 打印ace与任何其他主机之间通信的IP 数据包, 但不包括与helios之间的数据包.
+tcpdump ip host ace and not helios
+# 如果想要获取主机210.27.48.1除了和主机210.27.48.2之外所有主机通信的ip包，使用命令：
+tcpdump ip host 210.27.48.1 and ! 210.27.48.2
+# 截获主机hostname发送的所有数据
+tcpdump -i eth0 src host hostname
+# 监视所有送到主机hostname的数据包
+tcpdump -i eth0 dst host hostname
 </code></pre>
-<h2 id="fdisk-manipulate-disk-partition-table-操作磁盘分区表"><a href="#fdisk-manipulate-disk-partition-table-操作磁盘分区表" class="headerlink" title="fdisk - manipulate disk partition table(操作磁盘分区表)"></a>fdisk - manipulate disk partition table(操作磁盘分区表)</h2><pre><code class="bash">[root@server-mom-test ~]# fdisk /dev/sdb
-欢迎使用 fdisk (util-linux 2.23.2)。
-
-更改将停留在内存中，直到您决定将更改写入磁盘。
-使用写入命令前请三思。
-
-命令(输入 m 获取帮助)：n
-Partition type:
-   p   primary (1 primary, 0 extended, 3 free)
-   e   extended
-Select (default p): p
-分区号 (1-4，默认 1)：
-起始 扇区 (2048-10485759，默认为 2048)：
-将使用默认值 2048
-Last 扇区, +扇区 or +size{K,M,G} (2048-10485759，默认为 10485759)：
-将使用默认值 10485759
-分区 1 已设置为 Linux 类型，大小设为 5 GiB
-
-命令(输入 m 获取帮助)：w
-The partition table has been altered!
-
-Calling ioctl() to re-read partition table.
-正在同步磁盘。
-
+<p><strong>监视指定主机和端口的数据包</strong></p>
+<pre><code class="bash"># 如果想要获取主机210.27.48.1接收或发出的telnet包，使用如下命令
+tcpdump tcp port 23 and host 210.27.48.1
+# 对本机的udp 123 端口进行监视 123 为ntp的服务端口
+tcpdump udp port 123 
 </code></pre>
-<h2 id="lvm-LVM2-tools-创建物理卷"><a href="#lvm-LVM2-tools-创建物理卷" class="headerlink" title="lvm -  LVM2 tools(创建物理卷)"></a>lvm -  LVM2 tools(创建物理卷)</h2><pre><code class="bash">lvm&gt; pvcreate /dev/sdb
-  Physical volume &quot;/dev/sdb&quot; successfully created.
-lvm&gt; pvdisplay
-  --- Physical volume ---
-  PV Name               /dev/sda2
+<p><strong>监视指定协议的数据包</strong></p>
+<pre><code class="bash"># 打印TCP会话中的的开始和结束数据包, 并且数据包的源或目的不是本地网络上的主机.(nt: localnet, 实际使用时要真正替换成本地网络的名字))
+tcpdump &#39;tcp[tcpflags] &amp; (tcp-syn|tcp-fin) != 0 and not src and dst net localnet&#39;
+# 打印所有源或目的端口是80, 网络层协议为IPv4, 并且含有数据,而不是SYN,FIN以及ACK-only等不含数据的数据包.(ipv6的版本的表达式可做练习)
+tcpdump &#39;tcp port 80 and (((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)&#39;
 </code></pre>
-<h2 id="利用ssh传输文件-scp-secure-copy-remote-file-copy-program"><a href="#利用ssh传输文件-scp-secure-copy-remote-file-copy-program" class="headerlink" title="利用ssh传输文件 scp(secure copy (remote file copy program))"></a>利用ssh传输文件 scp(secure copy (remote file copy program))</h2><p>在linux下一般用scp这个命令来通过ssh传输文件。</p>
-<ul>
-<li>-P(port)指定端口号。(Specifies the port to connect to on the remote host.  Note that this option is written with a capital ‘P’, because -p is already reserved for preserving the times and modes  of the file.)</li>
-<li>-l(limit) Limits the used bandwidth, specified in Kbit/s.</li>
-</ul>
-<ol>
-<li>从服务器上下载文件</li>
-</ol>
-<pre><code class="bash"># scp root@192.168.0.101:/var/www/test.txt 把192.168.0.101上的/var/www/test.txt 的文件下载到/var/www/local_dir
-$ scp username@servername:/path/filename /var/www/local_dir
-</code></pre>
-<ol start="2">
-<li>上传本地文件到服务器</li>
-</ol>
-<pre><code class="bash">$ scp /path/filename username@servername:/path  
-</code></pre>
-<ol start="3">
-<li>从服务器下载整个目录</li>
-</ol>
-<pre><code class="bash"># 递归的下载整个目录
-$ scp -r username@servername:/var/www/remote_dir/ /var/www/local_dir
-</code></pre>
-<ol start="4">
-<li>上传目录到服务器</li>
-</ol>
-<pre><code class="bash">$ scp -r local_dir username@servername:remote_dir
-</code></pre>
-<h2 id="free-显示系统中已用和未用的内存空间总和"><a href="#free-显示系统中已用和未用的内存空间总和" class="headerlink" title="free - 显示系统中已用和未用的内存空间总和"></a>free - 显示系统中已用和未用的内存空间总和</h2><p>总览 (SYNOPSIS)<br>       free [-b | -k | -m] [-o] [-s delay ] [-t] [-V]</p>
-<p>描述 (DESCRIPTION)<br>       free 显示 系统中 已用和未用的 物理内存和交换内存, 共享内存和 内核使用的 缓冲区的 总和.</p>
-<p>选项 (Options)</p>
-<pre><code>   -b 选项 以字节为单位 显示 内存总和; -k 选项 (缺省的) 以 KB 为单位 显示; -m 选项 以 MB 为单位.
 
-   -t 选项 显示 一个 总计行.
-
-   -h 选项 以M，G显示
-
-   -o 选项 禁止 &quot;buffer adjusted&quot; 行的显示. 除非 指定 free 从 (相应的) 已用/未用的 内存 减去/加上 缓冲区内存.
-
-   -s 使 free 以 delay 秒为间隔, 连续抽样显示. delay 可以设置成浮点数, 它用 usleep(3) 做 微秒级 延迟.
-
-   -V 显示版本信息.
-</code></pre>
             <hr>
           </div>
           <br>
@@ -433,7 +368,7 @@ $ scp -r username@servername:/var/www/remote_dir/ /var/www/local_dir
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "常用shell命令&nbsp;",
+        "TCP抓包&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

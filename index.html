@@ -142,7 +142,7 @@
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020-09-22/EightQueensPuzzle/">
+      <a href="/2020-10-27/EightQueensPuzzle/">
         <p class="h4 index-header">八皇后问题</p>
         
         
@@ -175,7 +175,7 @@ public class Queen2 {
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-27&nbsp;&nbsp;
         
         
         
@@ -187,7 +187,51 @@ public class Queen2 {
     
     
     <div class="col-12 col-md-8 m-auto">
-      <a href="/2020-09-22/记录常见shell命令/">
+      <a href="/2020-10-27/tcp抓包/">
+        <p class="h4 index-header">TCP抓包</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">安装
+# under centos
+yum install tcpdump
+# under Ubuntu
+apt-get install tcpdump
+
+监视指定网络接口的数据包(一定要查看网卡)
+tcpdump -i eth1
+
+监视指定主机的数据包
+# 打印所有进入或离开sundown的数据包.
+tcpdump host sundown
+# 指定ip,例如截获所有210.27.48.1 的主机收到的和发出的所有的数据包
+tcpdump host 210.27.48.1
+# 打印helios 与 hot 或者与 ace 之间通信的数据包
+tcpdump host helios and \( hot or ace \)
+# 截获主机210.27.48.1 和主机210.27.48.2 或210.27.48.3的通信
+tcpdump host 210.27.48.1 and \ (210.27.48.2 or 210.27.48.3 \) 
+# 打印ace与任何其他主机之间通信的IP 数据包, 但不包括与helios之间的数据包.
+tcpdump ip host ace and not</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-27&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020-10-27/记录常见shell命令/">
         <p class="h4 index-header">常用shell命令</p>
         
         
@@ -211,7 +255,7 @@ public class Queen2 {
 
       <div>
         
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-09-22&nbsp;&nbsp;
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-10-27&nbsp;&nbsp;
         
         
         
