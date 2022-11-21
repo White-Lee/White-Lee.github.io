@@ -1,0 +1,42 @@
+version: 2
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+         filters:
+            branches:
+              only: hexo-source
+
+jobs:
+  build:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run:
+          name: Disable jekyll builds
+          command: touch ~/.nojekyll
+      - run:
+          name: Prepare Git Initialization
+          command: |
+            git config user.email "whitelee8080@gmail.com"
+            git config user.name "miracleshiy"
+      - run:
+          name: Install and Configure Dependencies
+          command: |
+            npm install -g gh-pages@2.0.1
+            npm install -g hexo-cli
+      - run: 
+          name: Install Hexo Site Dependencies
+          command: npm install
+      - run: 
+          name: Generate Hexo Static Files
+          command: hexo generate 
+      - add_ssh_keys:
+          fingerprints:
+            - $GH_TOKEN
+      - run:
+          name: Deploy Static Files to master Branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist master
