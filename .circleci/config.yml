@@ -39,4 +39,4 @@ jobs:
             - $GH_TOKEN
       - run:
           name: Deploy Static Files to master Branch
-          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist master
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist public
