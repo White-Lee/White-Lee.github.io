@@ -36,7 +36,7 @@ jobs:
           command: hexo generate 
       - add_ssh_keys:
           fingerprints:
-            - "4e:e6:aa:6f:52:fb:0f:19:71:d6:86:8f:62:4e:80:5c"
+            - "81:6c:d9:80:60:18:ef:cb:90:bd:c9:cb:0f:33:5d:7f"
       - run:
           name: Deploy Static Files to master Branch
           command: gh-pages --dotfiles --message "[skip ci] Updates" --dist public
