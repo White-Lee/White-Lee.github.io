@@ -15,13 +15,12 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://white-lee.github.io',
   baseUrl: '/',
   organizationName: 'White-Lee',
   projectName: 'White-Lee.github.io', 
   onBrokenLinks: 'throw',
+
 
   i18n: {
     defaultLocale: 'zh-Hans',
@@ -35,7 +34,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl:
-            'https://github.com/White-Lee/White-Lee.github.io#'
+            'https://github.com/White-Lee/White-Lee.github.io'
         },
         blog: {
           showReadingTime: true,
