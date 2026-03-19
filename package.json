@@ -13,7 +13,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "dg": "GIT_USER=White-Lee USE_SSH=true DEPLOYMENT_BRANCH=main docusaurus deploy"
+    "dg": "GIT_USER=White-Lee USE_SSH=true DEPLOYMENT_BRANCH=gh-pages docusaurus deploy"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
